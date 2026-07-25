@@ -30,3 +30,10 @@ A2: {<br>
 The bot needs the url manual from different level that you need to get the data.
 
 In this moment the bot only works with English languages, I am working if bot works with different languages from Busuu platform
+
+RUN:
+Create virtual environmment:
+python -m venv venv
+
+Install selenium and webdriver:
+pip install selenium webdriver-manager
