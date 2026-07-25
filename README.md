@@ -1,4 +1,4 @@
-Busuu-Web-Scraper 📚👨🏻‍💻🇮🇹🇺🇲🇧🇷🇫🇷🇨🇳
+Busuu-Web-Scraper 📚👨🏻‍💻 🇮🇹 
 This repository will help you to study any languages from Busuu platform 
 
 PROBLEM:
