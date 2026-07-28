@@ -12,7 +12,7 @@ def create_driver():
     driver = webdriver.Chrome(options=options) # Starts a new Chrome browser with options configutation
     return driver
 
-# Function for Scroll and extract chapters and lessons
+# Function for Scroll 
 def scrolling_load_content(driver, pause=1.2, max_times = 30): 
     """
     This function scroll the browser for content and wait a bit and try a few times if needed.
@@ -35,4 +35,27 @@ def scrolling_load_content(driver, pause=1.2, max_times = 30):
             times = 0
             scroll_height = new_height
 
-
+# Function for extracting chapters and lessons
+def extract_chapters_lessons(driver):
+    """
+    Run this JS script in the DOM and return a list of nodes called chapter.
+    """
+    script = """
+    const nodes = document.querySelectorAll('h3, [data-testid="lesson_card"]');
+    const result = [];
+    nodos.forEach(n => {
+        if (n.tagName.toLowerCase() === 'h3') {
+            result.push({tipo: 'chapter', text: n.textContent.trim()});
+        } else {
+            const title = n.querySelector('[data-testid="dialog_level_title"]');
+            const subtitle = title ? title.nextElementSibling : null;
+            result.push({
+                tipy: 'lesson',
+                title: title ? title.textContent.trim() : null,
+                subtitle: subtitle ? subtitle.textContent.trim() : null
+            });
+        }
+    });
+    return result;
+    """
+    return driver.execute_script(script)
